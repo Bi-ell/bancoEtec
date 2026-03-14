@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000000;
+  color: #fff;
+}
+
+.logo {
+  width: 90px;
+  border-radius: 50px;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)),
+    url("../assets/fundo.png");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.login-box {
+  height: auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  background-color: #0000008d;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  height: auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 15px 0;
+  font-size: 14px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkbox input {
+  display: none;
+}
+
+/* caixa personalizada */
+.checkbox label::before {
+  content: "✓";
+  color: rgba(255, 255, 255, 0.497);
+  background: #a12ecb1c;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #a12ecb;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* quando marcado */
+.checkbox input:checked+label::before {
+  content: "✓";
+  font-weight: bold;
+  color: white;
+  background: #a12ecb;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.forgot {
+  text-decoration: none;
+  color: #c438f7;
+  font-size: 13px;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+  color: #a12ecb;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  background: #c438f7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.button:hover {
+  background: #a12ecb;
+}
+
+a {
+  color: #c438f7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #a12ecb;
+}
