@@ -4,6 +4,7 @@ import Input from "./Input";
 import Button from "./Button";
 import logo from "../assets/Etec.png";
 import api from "../services/api";
+import { toast } from "react-toastify";
 
 function RegisterForm() {
     const [email, setEmail] = useState(null);
@@ -18,25 +19,36 @@ function RegisterForm() {
             const response = await api.post("/user", {
                 email, password, name, typeUser
             });
-            alert(response.data.response);
+
+            toast.success(response.data.response, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+
             setEmail("");
             setName("");
             setPassword("");
             setTypeUser("");
+
         } catch (err) {
-            alert(`erro ao cadastrar: ${err}`)
+            console.log(err);
         }
-
-
     }
 
     return (
-        <div className="login-box">
+        <div className="login-box" onSubmit={onSubmit}>
 
             <img src={logo} alt="Logo" className="logo" />
 
             <h2>Cadastro</h2>
-            <form className="form" onSubmit={onSubmit}>
+
+            <form className="form" >
                 <Input
                     type="email"
                     placeholder="Digite seu email"
@@ -79,7 +91,6 @@ function RegisterForm() {
             <p>
                 Já tem conta? <Link to="/">Fazer login</Link>
             </p>
-
         </div>
     );
 }
