@@ -2,7 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import React, { Children, useEffect, useMemo } from 'react'
 import { useNavigate } from "react-router-dom";
 
-function protectorRouter({roles, children}) {
+function ProtectorRouter({ roles, children }) {
     const token = localStorage.getItem("token");
     const navigateTo = useNavigate();
 
@@ -19,16 +19,16 @@ function protectorRouter({roles, children}) {
     }, [token]);
 
     useEffect(() => {
-        if(!user || user.exp * 1000 < Date.now()){
+        if (!user || user.exp * 1000 < Date.now()) {
             navigateTo("/");
             return;
         }
-        if(roles && !roles.includs(user.typeUser)){
+        if (roles && !roles.includs(user.typeUser)) {
             navigateTo("/home");
             return;
         }
-        return children
-    },[user]);
+    }, [user]);
+    return children
 }
 
-export default protectorRouter
+export default ProtectorRouter
