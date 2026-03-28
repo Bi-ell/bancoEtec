@@ -1,8 +1,8 @@
 import { jwtDecode } from "jwt-decode";
-import React, { useEffect, useMemo } from 'react'
+import React, { Children, useEffect, useMemo } from 'react'
 import { useNavigate } from "react-router-dom";
 
-function protectorRouter() {
+function protectorRouter({roles, children}) {
     const token = localStorage.getItem("token");
     const navigateTo = useNavigate();
 
@@ -23,7 +23,12 @@ function protectorRouter() {
             navigateTo("/");
             return;
         }
-    },[]);
+        if(roles && !roles.includs(user.typeUser)){
+            navigateTo("/home");
+            return;
+        }
+        return children
+    },[user]);
 }
 
 export default protectorRouter
