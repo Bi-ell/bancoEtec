@@ -21,7 +21,7 @@ function LoginForm() {
 
         setTimeout(() => {
             navigateTo("/home")
-        }, 2000);
+        }, 2000 );
 
         setEmail("");
         setPassword("");
