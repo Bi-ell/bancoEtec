@@ -7,6 +7,7 @@ import Adm from "./pages/Adm";
 import Home from "./pages/Home";
 import Comum from "./pages/Comum";
 import ProtectorRouter from "./helpers/protectorRouter";
+import Author from "./pages/Author/Index.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/home" element={
           <ProtectorRouter>
             <Home />
@@ -23,9 +25,12 @@ function App() {
         <Route path="/adm" element={
           <ProtectorRouter roles={"admin"}>
             <Adm />
-          </ProtectorRouter>} />
-          
+          </ProtectorRouter>
+        } />
+        
         <Route path="/comum" element={<Comum />} />
+
+        <Route path="/autor" element={<Author />} />
       </Routes>
       <ToastContainer />
     </>

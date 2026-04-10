@@ -18,6 +18,8 @@ api.interceptors.response.use(
                 progress: undefined,
                 theme: "dark",
             });
+
+            return response;
         },
     (error) => {
         if(error.response.status >= 400 && error.response.status < 500){

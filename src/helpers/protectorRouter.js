@@ -12,7 +12,7 @@ function ProtectorRouter({ roles, children }) {
         try {
             return jwtDecode(token);
         } catch (err) {
-            console.log("tokwn invalido", err);
+            console.log("token invalido", err);
             return null;
         }
 

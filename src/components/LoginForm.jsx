@@ -1,27 +1,26 @@
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import api from "../services/api";
 import Input from "./Input";
 import Button from "./Button";
 import logo from "../assets/Etec.png";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
 
-    const navigateTo = useNavigate();
-
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
+    const navigateTo = useNavigate();
 
     async function onSubmit(e) {
         e.preventDefault();
-
-        const { data } = await api.post("/login", { email, password });
+        const {data} = await api.post("/login", { email, password });
 
         localStorage.setItem("token", data.token);
 
         setTimeout(() => {
             navigateTo("/home")
-        }, 2000);
+        }, 2000)
 
         setEmail("");
         setPassword("");
