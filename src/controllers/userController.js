@@ -11,27 +11,27 @@ route.post("/", async (request, response) => {
     const {name, email, password, typeUser} = request.body;
 
     if(name.length < 2){
-        return response.status(400).send(`O nome precisa ter no mínimo 2 letras.`);
+        return response.status(400).send({"response": "O nome precisa ter no mínimo 2 letras."});
     }
 
     if(!name){
-        return response.status(400).send(`O nome não pode ser nulo ou vázio.`);
+        return response.status(400).send({"response": "O nome não pode ser nulo ou vázio."});
     }
 
     if(!email){
-        return response.status(400).send(`O email não pode ser nulo ou vázio.`);
+        return response.status(400).send({"response": "O email não pode ser nulo ou vázio."});
     }
 
     if(!email.includes('@')){
-        return response.status(400).send(`O formato de email está invalido`);
+        return response.status(400).send({"response": "O formato de email está invalido"});
     }
 
     if(password.length < 6 || password.length > 10){
-        return response.status(400).send(`A senha precisa ter mais de 6 e menos que 10 caracteres.`);
+        return response.status(400).send({"response": "A senha precisa ter mais de 6 e menos que 10 caracteres."});
     }
 
     if(typeUser.toUpperCase() != "ADMIN" && typeUser.toUpperCase() != "COMUM"){
-        return response.status(400).send(`O tipo de usuário tem que ser "admin" ou "comum".`);
+        return response.status(400).send({"response": `O tipo de usuário tem que ser "admin" ou "comum".`});
     }
 
     if(!typeUser){
@@ -72,23 +72,23 @@ route.put("/", async (request, response) => {
     const {id, name, email, password, typeUser} = request.body;
 
     if(name.length < 2){
-        return response.status(400).send(`O nome precisa ter no mínimo 2 letras.`);
+        return response.status(400).send({"response": "O nome precisa ter no mínimo 2 letras."});
     }
 
     if(!email){
-        return response.status(400).send(`O email não pode ser nulo ou vázio.`);
+        return response.status(400).send({"response": "O email não pode ser nulo ou vázio."});
     }
 
     if(!email.includes('@')){
-        return response.status(400).send(`O formato de email está invalido`);
+        return response.status(400).send({"response": "O formato de email está invalido"});
     }
 
     if(password.length < 6 || password.length > 10){
-        return response.status(400).send(`A senha precisa ter mais de 6 e menos que 10 caracteres.`);
+        return response.status(400).send({"response": "A senha precisa ter mais de 6 e menos que 10 caracteres."});
     }
 
     if(typeUser.toUpperCase() != "ADMIN" && typeUser.toUpperCase() != "COMUM"){
-        return response.status(400).send(`O tipo de usuário tem que ser "admin" ou "comum".`);
+        return response.status(400).send({"response": `O tipo de usuário tem que ser "admin" ou "comum".`});
     }
 
     if(!typeUser){

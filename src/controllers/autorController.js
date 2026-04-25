@@ -38,12 +38,9 @@ route.post("/", async (request, response) => {
 });
 
 route.get("/", async (request, response) => {
-    try{
         const autors = await autorRepository.find();
         return response.status(200).send({"response": autors});
-    }catch(error){
-        return response.status(500).send({"response": `not find ${error}`});
-    }
+    
 });
 
 route.get("/:name", async (request, response) => {
