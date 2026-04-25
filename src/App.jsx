@@ -7,7 +7,7 @@ import Adm from "./pages/Adm";
 import Home from "./pages/Home";
 import Comum from "./pages/Comum";
 import ProtectorRouter from "./helpers/protectorRouter";
-import Author from "./pages/Author/Index.jsx";
+import Author from "./pages/Author";
 
 function App() {
   return (

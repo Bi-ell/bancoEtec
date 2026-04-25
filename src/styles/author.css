@@ -1,0 +1,138 @@
+/* Container principal */
+.autor div {
+  max-width: 1000px;
+  /* margin: 40px auto; */
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-autor {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.autor .linha-titulo {
+  color: #ffffff;
+  background: #6e198e;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 12px 10px;
+  border-bottom: solid #ffffff 1px;
+}
+
+.autor h1 {
+  margin: 0px;
+  font-size: 2rem;
+}
+
+.autor button,
+.modal-action button {
+  /* width: 100%; */
+  padding: 8px;
+  margin: 2px;
+  background: #c438f7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.autor button:hover,
+.modal-action button:hover {
+  background: #a12ecb;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9998; /* abaixo do modal */
+}
+
+.modal-action {
+  position: absolute;
+  background-color: #000000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: solid 4px #6e198e;
+  border-radius: 20px;
+  box-shadow:  0 0 1000px 1000px rgba(0, 0, 0, 0.573);
+  pointer-events: auto; 
+  z-index: 9999;
+}
+
+/* Estilização da Tabela */
+.autor table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0000008d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+  /* Garante que as bordas arredondadas apareçam */
+}
+
+/* Cabeçalho */
+.autor thead {
+  background-color: #9d2cc6;
+  color: #ffffff;
+}
+
+.autor th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* Linhas e Células */
+.autor td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #676565;
+  color: #fefefe;
+  font-size: 0.95rem;
+}
+
+/* Efeito Zebra (Linhas alternadas) */
+/* .autor tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+} */
+
+/* Efeito de Hover (Destaque ao passar o mouse) */
+.autor tbody tr:hover td {
+  background-color: #b1b1b1;
+  color: #000;
+  transition: background-color 0.3s ease;
+}
+
+
+
+/* Estilização para o estado de Carregamento/Erro */
+.autor h1:contains("Carregando"),
+.autor h1:contains("Erro") {
+  text-align: center;
+  margin-top: 100px;
+  color: #666;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  .autor table {
+    display: block;
+    overflow-x: auto;
+  }
+}
