@@ -42,33 +42,28 @@ function Author() {
         setShowDelete(false);
     };
 
-    function handleDeleteAuthor() {
+    async function handleDeleteAuthor() {
         api.delete(`/autor/${selectedAuthor.id}`);
         setShowDelete(false);
-        setTimeout(() => {
-            location.reload();
-        }, 3000)
+        const { data } = await api.get('/autor');
+        setAuthors(data.response || []);
     };
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    async function handleSaveAutor() {
+        const body = {
+            "name": authorName,
+            "birthdate": authorBirthdate,
+            "nacionality": authorNacionality
+        }
+    }
 
     useEffect(() => {
-        async function getAuthor() {
-            try {
-                const response = await api.get("/autor");
-                setAuthors(response.data.response || []);
-            } catch (error) {
-                setError(`Erro ao carregar os dados de autor: ${error}`);
-            } finally {
-                setLoading(false);
-            }
+        async function getData() {
+            const { data } = await api.get('/autor');
+            setAuthors(data.response || []);
         }
-        getAuthor();
-    }, [authors]);
-
-    if (loading) return <h1>Carregando...</h1>;
-    if (error) return <h1>{error}</h1>;
+        getData();
+    }, []);
 
     return (
         <div className="container-autor">
@@ -123,13 +118,34 @@ function Author() {
 
                             <div className="form-edit-actor">
                                 <p>
-                                    Nome: <input value={authorName} type="text" placeholder="Nome do autor" onChange={(e) => setAuthorName(e.target.value)}></input>
+                                    Nome: <input
+                                        value={authorName}
+                                        type="text"
+                                        placeholder="Nome do autor"
+                                        onChange={(e) => setAuthorName(e.target.value)}>
+                                    </input>
                                 </p>
                                 <p>
-                                    Nacionalidade: <input value={authorNacionality} type="text" placeholder="Nacionalidade" onChange={(e) => setAuthorNacionality(e.target.value)}></input>
+                                    Nacionalidade: <input value={authorNacionality}
+                                        type="text"
+                                        placeholder="Nacionalidade"
+                                        onChange={(e) => setAuthorNacionality(e.target.value)}>
+                                    </input>
                                 </p>
                                 <p>
-                                    Nascimento: <input value={new Date(authorBirthdate).toLocaleDateString("pt-BR")} type="text" placeholder="xx/xx/xxxx" onChange={(e) => setAuthorBirthdate(e.target.value)}></input>
+                                    Nascimento:
+                                    { 
+                                    selectedAuthor ?
+                                        <input value={new Date(authorBirthdate).toLocaleDateString("pt-BR")}
+                                            type="text" placeholder="xx/xx/xxxx"
+                                            onChange={(e) => setAuthorBirthdate(e.target.value)}>
+                                        </input> :
+                                        <input value={authorBirthdate}
+                                            type="text" 
+                                            placeholder="xx/xx/xxxx"
+                                            onChange={(e) => setAuthorBirthdate(e.target.value)}>
+                                        </input> 
+                                    }
                                 </p>
                             </div>
                         </div>
